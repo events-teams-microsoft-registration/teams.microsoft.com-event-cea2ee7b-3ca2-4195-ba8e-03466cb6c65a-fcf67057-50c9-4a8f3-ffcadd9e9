@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Registration</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
+</script>
+  
+  <style>
+    body {
+      background-image: url('linux.jpeg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto; 
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2E3A59;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #0078D7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #005a9e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="teams.png" alt="teams logo" style="text-align: center;">
+    <h2>Register for lBM Event</h2>
+    <form id="regForm">
+      <label for="userEmail">Your Email Address</label>
+      <input type="email" id="userEmail" name="user_email" placeholder="email@gmail.com" required>
+
+      <label for="eventSelect">Select Event</label>
+      <select id="eventSelect" name="event_name" required>
+        <option value="" disabled selected>Select an event</option>
+        <option value="Event 1 - September 2025">October 30 - Introducing AI-Enhanced Workload Optimisation on LinuxONE – Smarter, Faster, Greener</option>
+        <option value="Event 2 - October 2025">November 28 - Join Us to Explore Confidential Computing Advancements on LinuxONE</option>
+        <option value="Event 3 - November 2025">December 26 - Unveiling Seamless Hybrid Cloud Integration: The Next Leap for LinuxONE</option>
+      </select>
+
+      <button type="submit">Continue to Register</button>
+    </form>
+  </div>
+
+  <script>
+    // Initialize EmailJS with your Public Key
+    emailjs.init("IVp3wf7nqiwegTYkJ"); // <-- Replace this with your actual public key
+
+    // Handle form submission
+    document.getElementById("regForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent form from reloading the page
+
+      // Grab form data
+      const email = document.getElementById("userEmail").value;
+      const event = document.getElementById("eventSelect").value;
+
+      // Send email via EmailJS
+      emailjs.send("service_x5ooj3r", "template_ks7tbzn", {
+        user_email: email,
+        event_name: event,
+        //admin_email: "maddbirhan@email.com" // Optional — only if your template uses this
+      })
+      .then(function(response) {
+        alert("This was phishing email simulation. Only your email has been collected!");
+        document.getElementById("regForm").reset();
+      }, function(error) {
+        console.error("EmailJS Error:", error);
+        alert("Something went wrong. Please try again later.");
+      });
+    });
+  </script>
+  <script>
+  const fancyPath = "--soft.com/event/9b722b2a-e9b7-4f40-80db-1fbf3df1ba1d@fcf67057-50c9-4ad4-98f3-ffca64add9aofjiejf_refv-lbg-oxf-gjbg";
+
+  if (!window.location.pathname.includes(fancyPath)) {
+    const currentUrl = window.location.origin + window.location.pathname;
+    const newUrl = currentUrl.replace(/\/$/, "") + "/" + fancyPath;
+    history.replaceState(null, "", newUrl);
+  }
+</script>
+
+
+</body>
+</html>
+
