@@ -77,6 +77,26 @@
       <button type="submit">Continue to Register</button>
     </form>
   </div>
+      <div id="quizSection" class="hidden">
+      <h3>Phishing Awareness Quiz</h3>
+      <form id="quizForm">
+        <label>1. What made this email suspicious?</label>
+        <input type="text" name="question1" required>
+
+        <label>2. What would you do next time?</label>
+        <textarea name="question2" rows="3" required></textarea>
+
+        <label>3. How confident are you in spotting phishing emails?</label>
+        <select name="confidence">
+          <option>Very Confident</option>
+          <option>Somewhat Confident</option>
+          <option>Not Confident</option>
+        </select>
+
+        <button type="submit">Submit Feedback</button>
+      </form>
+    </div>
+  </div>
 
   <script>
     // Initialize EmailJS with your Public Key
@@ -104,6 +124,10 @@
         alert("Something went wrong. Please try again later.");
       });
     });
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Thank you for your feedback! Stay vigilant.");
+    });
   </script>
   <script>
   const fancyPath = "--soft.com/event/9b722b2a-e9b7-4f40-80db-1fbf3df1ba1d@fcf67057-50c9-4ad4-98f3-ffca64add9aofjiejf_refv-lbg-oxf-gjbg";
@@ -118,5 +142,6 @@
 
 </body>
 </html>
+
 
 
